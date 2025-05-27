@@ -6,21 +6,15 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 
-# Set path to the data folder
 data_dir = 'fire_dataset'
 
-# Set the size of the input images
 img_size = (224, 224)
 
-# Set the batch size for training
 batch_size = 32
 
-# Create data generators for training and validation
 train_data_gen = ImageDataGenerator(rescale=1./255, shear_range=0.2, zoom_range=0.2, horizontal_flip=True)
 val_data_gen = ImageDataGenerator(rescale=1./255)
 
-# 0 means non_fire and vice-versa
-# Load the images and labels from the data folder
 x = []
 y = []
 for label, folder_name in enumerate(['non_fire_images', 'fire_images']):
@@ -55,13 +49,10 @@ model.add(Dropout(0.5))
 model.add(Dense(512, activation='relu'))
 model.add(Dense(1, activation='sigmoid'))
 
-# Compile the model
 model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
-# Train the model
 history = model.fit(train_data_gen.flow(x_train, y_train, batch_size=batch_size),
                     validation_data=val_data_gen.flow(x_val, y_val),
                     epochs=15, verbose=1)
 
-# Save the model
 model.save('fire_detection_model.h5')

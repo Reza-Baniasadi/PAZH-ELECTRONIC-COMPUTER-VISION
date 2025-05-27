@@ -1,8 +1,3 @@
-''' to run the file type
-    python test.py -m 'path-to-model' 
-   ex:- python test.py -m D:/Downloads/fd_v2.h5 
-    in command lin'''
-
 import sys
 import os
 import numpy as np 
@@ -25,7 +20,6 @@ import pytz
 
 now = datetime.now()
 
-# assuming now contains a timezone aware datetime
 tz = pytz.timezone('Asia/Kolkata')
 your_now = now.astimezone(tz)
 print(your_now)
@@ -151,7 +145,7 @@ def main(encoder_model,decoder_network):
                 class_val = 0
             prediction = classes[class_val]
             default = prediction
-            if default=='fight':  #send a message to authority if time difference from last time is > 60 minutes
+            if default=='fight':  
                 if(d_flag == 1):
                     d_flag = 0
                     last_date = datetime.now().astimezone(tz).date()
