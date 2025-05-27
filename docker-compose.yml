@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  fire-detection:
+    build: .
+    container_name: fire_detector
+    volumes:
+      - .:/app
+    command: python Fire-Detection/app.py
+
+  face-trainer:
+    build: .
+    container_name: face_trainer
+    volumes:
+      - .:/app
+    command: python FaceDetection/train.py
+
+  fingerprint:
+    build: .
+    container_name: fingerprint_runner
+    volumes:
+      - .:/app
+    command: python FingerPrint/finger-model.py
+
+  fight-detector:
+    build: .
+    container_name: fight_detector
+    volumes:
+      - .:/app
+    command: python FightDetection/test.py
