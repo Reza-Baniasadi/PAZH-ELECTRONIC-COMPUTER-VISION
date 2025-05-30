@@ -11,7 +11,7 @@ pygame.init()
 pygame.display.set_caption("OpenCV camera stream on Pygame")
 screen = pygame.display.set_mode([640, 480])
 HOST='127.0.0.1'
-PORT=8485
+PORT=5372
 
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 print('Socket created')
