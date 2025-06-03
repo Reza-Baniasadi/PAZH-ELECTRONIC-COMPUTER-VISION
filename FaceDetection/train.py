@@ -48,7 +48,7 @@ def recognize_face(face_img, threshold=0.7):
     emb = base_model(img_expanded).numpy()
 
     if len(embeddings) == 0:
-        raise ValueError("هیچ دیتاستی برای مقایسه وجود ندارد!")
+        raise ValueError("هیچ دیتاستی برای مقایسه وجود نداد")
 
     sims = cosine_similarity(emb, embeddings)[0]
     max_sim_idx = np.argmax(sims)

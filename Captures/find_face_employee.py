@@ -8,7 +8,6 @@ face_cascade = cv.CascadeClassifier(cv.data.haarcascades + 'haarcascade_frontalf
 def lookEmployee():
     cap = cv.VideoCapture(0)
     if not cap.isOpened():
-        print("خطا در باز کردن دوربین.")
         return
 
     while True:
